@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Create | new file</title>
+<body>
+<section layout:fragment="content">
+    <div class="col-md-12">
+        <h2>Upload new File</h2>
+        <th:block th:if="${message}">
+            <p class="alert alert-primary" th:text="${message}"></p>
+        </th:block>
+        <form method="post" th:object="${fileShareForm}" enctype="multipart/form-data" class="form">
+            <div class="form-group row">
+                <lable class = "col-md-2">Name</lable>
+                <input type="text" class="form-control col-md-10" th:field="*{name}">
+            </div>
+            <div class="form-group row">
+                <lable class = "col-md-2">File</lable>
+                <input type="file" class="form-control col-md-10" th:field="*{feature}">
+            </div>
+
+            <div class="form-group row">
+                <lable class ="col-md-2">Description</lable>
+                <input type="text" class="form-control col-md-10" th:field="*{description}">
+            </div>
+            <div class="form-group row">
+                <lable class = "col-md-2">Status</lable>
+                <div class="col-md-10">
+                    <label class="radio-inline">
+                        <input th:field="*{share}" type="radio" name="isShare" value="1">public
+                    </label>
+                    <label class="radio-inline">
+                        <input th:field="*{share}"  type="radio" name="isShare" value="0">private
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <button type="submit" class="btn btn-primary" >Create file</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+</body>
+</html>

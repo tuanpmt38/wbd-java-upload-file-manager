@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Send | mail</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="col-md-12">
+        <h1>Sending E-mail in Spring MVC</h1>
+
+        <th:block th:if="${message}">
+            <p class="alert alert-primary" th:text="${message}"></p>
+        </th:block>
+        <form action="#" th:action="@{/__${id}__/sendEmail}" th:object="${fileShare}" class="form"  method="post">
+            <div class="form-group row">
+                <lable class="col-md-2">File name</lable>
+                <p type="text" class="col-md-10"  th:text="${fileShare.feature}"></p>
+            </div>
+            <div class="form-group row">
+                <lable class="col-md-2">To</lable>
+                <input  type="text" class="form-control col-md-10" name="recipient" size="50">
+            </div>
+            <div class="form-group row">
+                <lable class="col-md-2">Subject</lable>
+                <input  type="text" class="form-control col-md-10" name="subject">
+            </div>
+            <div class="form-group row">
+                <lable class="col-md-2">Message</lable>
+                <textarea  type="text" class="form-control col-md-10" name="message"></textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-10">
+                    <input type="submit" class="btn btn-primary" value="Send Link"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

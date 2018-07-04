@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit | file</title>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="col-md-12">
+        <h2>Edit File</h2>
+        <th:block th:if="${message}">
+            <p class="alert alert-primary" th:text="${message}"></p>
+        </th:block>
+        <form method="post" th:object="${fileShareForm}" enctype="multipart/form-data" class="form">
+            <div class="form-group">
+                <input type="hidden" class="form-control" th:field="*{id}">
+
+                <lable >File</lable>
+                <input type="file" class="form-control" th:field="*{feature}" th:text="${fileShareForm.featureUrl}">
+            </div>
+            <div class="form-group">
+                <lable>Name</lable>
+                <input type="text" class="form-control" th:field="*{name}">
+            </div>
+            <div class="form-group">
+                <lable>Description</lable>
+                <input type="text" class="form-control" th:field="*{description}">
+            </div>
+            <div class="form-group">
+                <lable>Status</lable>
+                <label class="radio-inline"><input th:field="*{share}" type="radio" name="isShare" value="1">public</label>
+                <label class="radio-inline"><input th:field="*{share}" type="radio" name="isShare" value="0">private</label>
+            </div>
+            <button type="submit" class="btn btn-primary" >Submit</button>
+        </form>
+    </div></section>
+
+</body>
+</html>
